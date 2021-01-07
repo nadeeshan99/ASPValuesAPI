@@ -1,16 +1,18 @@
 version: 0.2
 phases:
-  pre_build:
-    commands:
-      - echo Restore started on `date`      
-      - dotnet restore ValuesAPI/ValuesAPI.csproj
+  install:
+    runtime-versions:
+      dotnet: 3.1
   build:
     commands:
-      - echo Build started on `date`
-      - dotnet publish -c release -o ./build_output ValuesAPI/ValuesAPI.csproj
+      - echo "CD into source folder, because my source code is tidy"
+      - cd ValuesAPI
+      - echo "Restore, Build, then Publish.."
+      - dotnet restore
+      - dotnet build --no-restore
+      - dotnet publish --no-restore --output outputDirectory
 artifacts:
+  base-directory: outputDirectory
   files:
-    - build_output/**/*
-    - scripts/**/*
-    - appspec.yml
+    - '**/*'
     - ServerlessTemplate.yml
