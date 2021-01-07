@@ -2,9 +2,8 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Restore started on `date`
-      - cd .\ValuesAPI
-      - dotnet restore
+      - echo Restore started on `date`      
+      - dotnet restore ValuesAPI/ValuesAPI.csproj
   build:
     commands:
       - echo Build started on `date`
