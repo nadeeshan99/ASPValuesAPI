@@ -12,7 +12,7 @@ phases:
       - dotnet build --no-restore
       - dotnet publish --no-restore -o ./build_output
 artifacts:
-  base-directory: build_output
+  base-directory: ../build_output
   files:
     - /**/*
     - ServerlessTemplate.yml
