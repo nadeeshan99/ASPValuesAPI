@@ -5,16 +5,16 @@ Resources:
   AspNetCoreLambdaFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler: AWSServerlessApp::AWSServerlessApp.LambdaEntryPoint::FunctionHandlerAsync
+      Handler: ValuesAPI::ValuesAPI.LambdaEntryPoint::FunctionHandlerAsync
       Runtime: dotnetcore3.1
-      CodeUri: 's3://severless-app-demo/ServerlessApp.zip'
+      CodeUri: 's3://severless-app-demo/ValuesAPI.zip'
       MemorySize: 256
       Timeout: 30        
       Events:
-        AspNetCoreAPI:
+        ValuesAPI:
           Type: Api
           Properties:
-            Path: /AspNetCoreAPI
+            Path: /api/values
             Method: get
       Environment:
         Variables:
