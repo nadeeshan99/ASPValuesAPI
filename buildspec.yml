@@ -3,14 +3,15 @@ phases:
   pre_build:
     commands:
       - echo Restore started on `date`
-      - dotnet restore ValuesAPI/ValuesAPI.csproj
+      - cd .\ValuesAPI
+      - dotnet restore
   build:
     commands:
       - echo Build started on `date`
-      - dotnet publish -c release -o ./build_output ValuesAPI/ValuesAPI.csproj
+      - dotnet publish -c release
 artifacts:
   files:
-    - ValuesAPI/build_output/**/*
+    - ValuesAPI/bin/release/netcoreapp3.1/publish/**/*
     - scripts/**/*
     - appspec.yml
     - ServerlessTemplate.yml
