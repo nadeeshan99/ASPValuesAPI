@@ -7,10 +7,10 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - dotnet publish -c release
+      - dotnet publish -c release -o ./build_output ValuesAPI/ValuesAPI.csproj
 artifacts:
   files:
-    - ValuesAPI/bin/release/netcoreapp3.1/publish/**/*
+    - build_output/**/*
     - scripts/**/*
     - appspec.yml
     - ServerlessTemplate.yml
