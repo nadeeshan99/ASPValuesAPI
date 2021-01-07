@@ -1,14 +1,18 @@
 version: 0.2
-env:
-  variables:
-    S3_BUCKET: severless-app-demo
-    REGION: ap-south-1
 phases:
+  install:
+    runtime-versions:
+      dotnet: 3.1
   build:
     commands:
-      - echo "Packaging CloudFormation nested stacks.."
-      - aws cloudformation package --region $REGION --template-file ServerlessTemplate.yml --s3-bucket $S3_BUCKET --output-template-file ServerlessTemplate.yml
-      - echo "Done."
-artifacts:
+      - echo "CD into source folder, because my source code is tidy"  
+      - cd ValuesAPI
+      - echo "Restore, Build, then Publish.."
+      - dotnet restore
+      - dotnet build --no-restore
+      - dotnet publish --no-restore --output /build_output
+artifacts:  
+  base-directory: ValuesAPI/outputDirectory
   files:
-    - ServerlessTemplate.yml    
+    - '/**/*'
+    - ServerlessTemplate.yml
