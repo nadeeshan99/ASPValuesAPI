@@ -10,9 +10,9 @@ phases:
       - echo "Restore, Build, then Publish.."
       - dotnet restore
       - dotnet build --no-restore
-      - dotnet publish --no-restore --output ./outputDirectory
+      - dotnet publish --no-restore --output outputDirectory
 artifacts:
   base-directory: outputDirectory
   files:
-    - '**/*'
+    - build_output/**/*
     - ServerlessTemplate.yml
