@@ -3,13 +3,14 @@ phases:
   pre_build:
     commands:
       - echo Restore started on `date`
-      - dotnet restore AWSServerlessApp/AWSServerlessApp.csproj
+      - dotnet restore ValuesAPI/ValuesAPI.csproj
   build:
     commands:
       - echo Build started on `date`
-      - dotnet publish -c release -o ./build_output AWSServerlessApp/AWSServerlessApp.csproj
+      - dotnet publish -c release -o ./build_output ValuesAPI/ValuesAPI.csproj
 artifacts:
   files:
-    - AWSServerlessApp/build_output/**/*
+    - ValuesAPI/build_output/**/*
     - scripts/**/*
     - appspec.yml
+    - ServerlessTemplate.yml
